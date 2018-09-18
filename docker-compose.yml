@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   jenkins:
-    image: jamessmith52963/jenkins:lts
+    image: b96wang/jenkins:lts
     entrypoint: ["/sbin/tini", "--", "/usr/local/bin/jenkins-init.sh"] 
     deploy:
       replicas: 1
@@ -10,7 +10,7 @@ services:
         condition: any
       placement:
         constraints:
-           - node.hostname == dockertoolbox.com
+           - node.hostname == default
     volumes:
       - jenkins_data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
